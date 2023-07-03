@@ -1,0 +1,185 @@
+[gd_scene load_steps=24 format=3 uid="uid://ordkj2pr11qi"]
+
+[ext_resource type="Material" uid="uid://bllmpmj55kcn7" path="res://assets/test.material" id="1_aqwly"]
+[ext_resource type="Shader" uid="uid://b1wdkryuh65mm" path="res://blood_spot.tres" id="2_arscr"]
+[ext_resource type="Shader" uid="uid://i4530fmjfaxo" path="res://blood.tres" id="3_x8utw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iieyk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_xcaeb"]
+sky_material = SubResource("ProceduralSkyMaterial_iieyk")
+
+[sub_resource type="Environment" id="Environment_pmtnf"]
+background_mode = 2
+sky = SubResource("Sky_xcaeb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_v7rw5"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0c5it"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b5dwi"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eswtp"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prs26"]
+render_priority = 0
+shader = ExtResource("3_x8utw")
+shader_parameter/ColorParameter = Color(1, 0, 0.071664, 1)
+
+[sub_resource type="Curve" id="Curve_yt6k8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4r8wd"]
+curve = SubResource("Curve_yt6k8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwq8n"]
+spread = 2.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_4r8wd")
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+collision_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_q885a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6sxle"]
+render_priority = 0
+shader = ExtResource("2_arscr")
+shader_parameter/ColorParameter = Color(1, 0, 0.0705882, 1)
+
+[sub_resource type="Curve" id="Curve_pvfed"]
+_data = [Vector2(0, 0.709091), 0.0, 0.0, 0, 0, Vector2(0.155844, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0pimk"]
+curve = SubResource("Curve_pvfed")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0dpln"]
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_0pimk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r7grq"]
+orientation = 1
+
+[sub_resource type="Animation" id="Animation_6xrfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blood:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.64262, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3ur3h"]
+resource_name = "turn around turn around turn around"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blood:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy5wu"]
+_data = {
+"RESET": SubResource("Animation_6xrfu"),
+"turn around turn around turn around": SubResource("Animation_3ur3h")
+}
+
+[node name="Node" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pmtnf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.680798, -0.353621, 0.641457, 0, 0.875743, 0.482778, -0.732472, 0.328674, -0.596204, 6.86616, 7.38671, -7.26094)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.277348, -0.380915, 0.882033, -0.394867, 0.791737, 0.466082, -0.875876, -0.477552, 0.0691763, -1.14872, 5.06091, 7.21519)
+light_color = Color(0.996078, 1, 0.992157, 1)
+light_energy = 0.543
+shadow_enabled = true
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(179.975, 0, 2.97495, 0, 1, 0, -2.97495, 0, 179.975, 0, -0.32958, 0)
+material_override = ExtResource("1_aqwly")
+mesh = SubResource("BoxMesh_v7rw5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0c5it")
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.936105, 0, 0, 0, 7.49849, 0, 0, 0, 15.8636, -5.6793, 1.29191, -2.53)
+material_override = ExtResource("1_aqwly")
+mesh = SubResource("BoxMesh_b5dwi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_eswtp")
+
+[node name="wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.09185e-08, 0, 13.4833, 0, 7.49849, 0, -0.936105, 0, -5.89373e-07, 1.24765, 1.29162, 4.74037)
+material_override = ExtResource("1_aqwly")
+mesh = SubResource("BoxMesh_b5dwi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_eswtp")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497317, 0)
+size = Vector3(22, 2, 18)
+
+[node name="blood" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.878075, 0, 0.478524, 0, 1, 0, -0.478524, 0, -0.878075, -0.171742, 3.55146, 0.583277)
+material_override = SubResource("ShaderMaterial_prs26")
+amount = 100
+sub_emitter = NodePath("../blood_spot")
+process_material = SubResource("ParticleProcessMaterial_pwq8n")
+draw_pass_1 = SubResource("QuadMesh_q885a")
+
+[node name="blood_spot" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.454099, 0, -0.890951, 0, 1, 0, 0.890951, 0, -0.454099, -0.535148, 1.18138, 0.95537)
+material_override = SubResource("ShaderMaterial_6sxle")
+cast_shadow = 0
+emitting = false
+amount = 300
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0dpln")
+draw_pass_1 = SubResource("QuadMesh_r7grq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="blood_spot"]
+autoplay = "turn around turn around turn around"
+libraries = {
+"": SubResource("AnimationLibrary_oy5wu")
+}
